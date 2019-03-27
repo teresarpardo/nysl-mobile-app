@@ -1,4 +1,4 @@
-# nysl-top
+# NYSL Games Schedule Mobile App
 
 ## Project setup
 ```
