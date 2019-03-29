@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/nysl_logo.png" />
+    <h1>Welcome to NYSL Games Schedule</h1>
+    <p>Choose your team</p> <!-- Aqui va un dropdown button para filtar la tabla por equipo -->
+
     <DataTable/>
   </div>
 </template>

@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+    
     <div id="nav">
+      <img alt="Vue logo" src="assets/nysl_logo.png"/>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <router-link to="/about">Information</router-link> |
       <router-link to="/contact">Contact</router-link>
     </div>
     <router-view />
