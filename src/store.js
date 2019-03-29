@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     games: [],
     teams: [],
-    //filterByTeam: "All teams"
+    dates: []
   },
   actions: {
     loadGames({ commit }) {
@@ -20,6 +20,7 @@ export default new Vuex.Store({
         .then(games => {
           commit("SET_GAMES", games);
           commit("TeamMenu", games);
+          commit("DateMenu", games);
         });
     }
   },
@@ -29,6 +30,17 @@ export default new Vuex.Store({
     },
     TeamMenu(state, games) {
       state.teams = [...new Set(games.map(game => game.home_team).sort())];
+    },
+    DateMenu(state, games) {
+      state.dates = [
+        ...new Set(
+          games
+            .map(game => game.date)
+            .sort(function(a, b) {
+              return a - b;
+            })
+        )
+      ];
     }
   },
   getters: {

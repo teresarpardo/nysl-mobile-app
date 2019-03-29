@@ -1,9 +1,14 @@
 <template>
   <div class="container">
-    
+    <h2>Choose your team:</h2>
     <select v-model="filterByTeam">
       <option class="dropdown-item" value="All teams">All teams</option>
       <option class="dropdown-item" v-for="team in teams" :key="team.id" :value="team">{{ team }}</option>
+    </select>
+    <h2>Choose your date:</h2>
+    <select v-model="filterByDate">
+      <option class="dropdown-item" value="All calendar">All Calendar</option>
+      <option class="dropdown-item" v-for="date in dates" :key="date.id" :value="date">{{ date }}</option>
     </select>
        
     <div>
@@ -40,6 +45,7 @@ export default {
   data () {
     return {
       filterByTeam: "All teams",
+      filterByDate: "All calendar",
     }
   },
   mounted () {
@@ -48,13 +54,19 @@ export default {
 
   computed: {
     teams(){
-    return this.$store.state.teams;
+      return this.$store.state.teams;
+    },
+    dates(){
+      return this.$store.state.dates;
     },
 
     filterGames () {
       let filterArr = this.$store.state.games;
       if (this.filterByTeam != "All teams") {
         filterArr = filterArr.filter(game => game.home_team === this.filterByTeam || game.away_team === this.filterByTeam);
+      }
+      if(this.filterByDate != "All calendar") {
+        filterArr = filterArr.filter(game => game.date === this.filterByDate);
       }
       return filterArr;
     }
