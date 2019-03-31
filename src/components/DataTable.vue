@@ -8,14 +8,13 @@
     <h2>Choose your date:</h2>
     <select v-model="filterByDate">
       <option class="dropdown-item" value="All calendar">All Calendar</option>
-      <option class="dropdown-item" v-for="date in dates" :key="date.id" :value="date">{{ date }}</option>
+      <option class="dropdown-item" v-for="date in dates" :key="date.id" :value="date">{{ changeDates(date) }}</option>
     </select>
        
     <div>
       <table class="table">
         <thead>
           <tr>
-            <th>Month</th>
             <th>Date</th>
             <th>Home Team</th>
             <th>Away Team</th>
@@ -25,11 +24,10 @@
         </thead>
         <tbody>
           <tr v-for="game in filterGames" :key="game.id">
-            <td>{{ game.month }}</td>
-            <td>{{ game.date }}</td>
+            <td>{{ changeDates(game.date) }}</td>
             <td>{{ game.home_team }}</td>
             <td>{{ game.away_team }}</td>
-            <td>{{ game.time }}</td>
+            <td>{{ game.times }}</td>
             <td>{{ game.location}}</td>
           </tr>
         </tbody>
@@ -42,25 +40,24 @@
 import { mapState } from 'vuex'
 export default {
   name: 'DataTable',
-  data () {
+  data() {
     return {
       filterByTeam: "All teams",
       filterByDate: "All calendar",
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('loadGames')
   },
 
   computed: {
-    teams(){
+    teams() {
       return this.$store.state.teams;
     },
-    dates(){
+    dates() {
       return this.$store.state.dates;
     },
-
-    filterGames () {
+    filterGames() {
       let filterArr = this.$store.state.games;
       if (this.filterByTeam != "All teams") {
         filterArr = filterArr.filter(game => game.home_team === this.filterByTeam || game.away_team === this.filterByTeam);
@@ -71,7 +68,15 @@ export default {
       return filterArr;
     }
   },
-
+  methods: {
+    changeDates(date){
+      date = date.split("/");
+      if(date[1]=== "09"){date[1] = "September"}
+      if(date[1]=== "10"){date[1] = "October"}
+      date = date.join(" of ");
+      return date
+    }
+  }
   
 }
 
