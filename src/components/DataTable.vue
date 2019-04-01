@@ -28,7 +28,7 @@
             <td>{{ game.home_team }}</td>
             <td>{{ game.away_team }}</td>
             <td>{{ game.times }}</td>
-            <td @click="goToMap(game.location)"><router-link to="/location">{{game.location}} </router-link></td>
+            <td @click="goToMap(game)"><router-link to="/location">{{game.location}} </router-link></td>
           </tr>
         </tbody>
       </table>

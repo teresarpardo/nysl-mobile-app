@@ -15,7 +15,7 @@ export default new Vuex.Store({
   actions: {
     loadGames({ commit }) {
       axios
-        .get("https://api.myjson.com/bins/1ajn72")
+        .get("https://api.myjson.com/bins/8td4i")
         .then(list => list.data)
         .then(games => {
           commit("SET_GAMES", games);
