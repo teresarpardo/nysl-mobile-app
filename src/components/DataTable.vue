@@ -28,7 +28,7 @@
             <td>{{ game.home_team }}</td>
             <td>{{ game.away_team }}</td>
             <td>{{ game.times }}</td>
-            <td>{{ game.location}}</td>
+            <td @click="goToMap(game.location)"><router-link to="/location">{{game.location}} </router-link></td>
           </tr>
         </tbody>
       </table>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+//import { mapState } from 'vuex'
 export default {
   name: 'DataTable',
   data() {
@@ -75,6 +75,9 @@ export default {
       if(date[1]=== "10"){date[1] = "October"}
       date = date.join(" of ");
       return date
+    },
+    goToMap(school){
+      this.$router.push({name:'location', params: {adress: school }})
     }
   }
   
