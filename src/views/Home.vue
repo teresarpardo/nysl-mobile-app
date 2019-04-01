@@ -14,6 +14,11 @@ export default {
   name: "home",
   components: {
     DataTable
+  },
+  methods:{
+  goToMap(location) {
+    this.$router.push({name:'location', params: {adress: location }})
+  }
   }
 };
 </script>
