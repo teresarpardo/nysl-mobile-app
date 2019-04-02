@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="information">
     <h1>Information</h1>
 
     <p>Facility Type:</p>

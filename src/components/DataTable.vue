@@ -1,28 +1,32 @@
 <template>
-  <div class="container">
-    <h2>Choose your team:</h2>
-    <select v-model="filterByTeam">
-      <option class="dropdown-item" value="All teams">All teams</option>
-      <option class="dropdown-item" v-for="team in teams" :key="team.id" :value="team">{{ team }}</option>
-    </select>
-    <h2>Choose your date:</h2>
-    <select v-model="filterByDate">
+<div>
+
+  <v-layout row wrap>
+    <v-flex xs12 md6>
+        <h2>Choose your team:</h2>
+      <v-select :items="teams" v-model="filterByTeam" label="Choose your team:" outline>
+        <option class="dropdown-item" value="All teams">All teams</option>
+        <option class="dropdown-item" v-for="team in teams" :key="team.id" :value="team">{{ team }}</option>
+      </v-select>
+    </v-flex>
+    <v-flex xs12 md6>
+      <h2>Choose your date:</h2>
+    <v-select :items="dates" v-model="filterByDate" label="Choose your date:" outline>
       <option class="dropdown-item" value="All calendar">All Calendar</option>
       <option class="dropdown-item" v-for="date in dates" :key="date.id" :value="date">{{ changeDates(date) }}</option>
-    </select>
-       
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Home Team</th>
-            <th>Away Team</th>
-            <th>Timetable</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
+    </v-select>
+    </v-flex>
+  </v-layout>
+
+  <v-layout row wrap>
+    <v-flex xs12>
+      <v-data-table
+        :headers="headers"
+        :items="filterGames"
+        hide-actions
+        pa-3
+      >
+        <template v-slot:items="games">
           <tr v-for="game in filterGames" :key="game.id">
             <td>{{ changeDates(game.date) }}</td>
             <td>{{ game.home_team }}</td>
@@ -30,18 +34,26 @@
             <td>{{ game.times }}</td>
             <td @click="goToMap(game)"><router-link to="/location">{{game.location}} </router-link></td>
           </tr>
-        </tbody>
-      </table>
-    </div>
+        </template>
+       </v-data-table>
+    </v-flex>
+  </v-layout>
+   
   </div>
 </template>
 
 <script>
-//import { mapState } from 'vuex'
 export default {
   name: 'DataTable',
   data() {
     return {
+      headers: [
+        {text: "Date", value: "date"},
+        {text: "Home Team", value: "home_team"},
+        {text: "Away Team", value: "away_team"},
+        {text: "Timetable", value: "times"},
+        {text:"Location", value: "location"}
+      ],
       filterByTeam: "All teams",
       filterByDate: "All calendar",
     }
@@ -53,6 +65,8 @@ export default {
   computed: {
     teams() {
       return this.$store.state.teams;
+
+
     },
     dates() {
       return this.$store.state.dates;
@@ -76,8 +90,8 @@ export default {
       date = date.join(" of ");
       return date
     },
-    goToMap(school){
-      this.$router.push({name:'location', params: {adress: school }})
+    goToMap(game){
+      this.$router.push({name:'location', params: {adress: game }})
     }
   }
   
