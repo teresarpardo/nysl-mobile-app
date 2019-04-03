@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="subheading grey--text">Welcome to NYSL Games Schedule</h1>
+    <h1 class="text-xs-center subheading grey--text">Welcome to NYSL Games Schedule</h1>
     <v-container class="my-2">
       <DataTable/>
     </v-container>

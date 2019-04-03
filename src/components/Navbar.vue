@@ -9,9 +9,9 @@
 
             <v-spacer></v-spacer>
 
-            <v-toolbar-items class="hidden-sm-and-down" v-for="link in links" :key="link.text" router :to="link.route">
-                <v-btn fab flat>
-                    <v-icon>{{ link.icon }}</v-icon>
+            <v-toolbar-items class="hidden-sm-and-down" v-for="link in links" :key="link.text">
+                <v-btn  fab icon :to="link.route">
+                    <v-icon color="primary">{{ link.icon }}</v-icon>
                 </v-btn>
             </v-toolbar-items>
         

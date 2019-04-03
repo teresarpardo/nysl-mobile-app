@@ -36,16 +36,5 @@ export default new Vuex.Store({
       state.dates = [...new Set(games.map(game => game.date).sort(function(a, b) {return a - b;}))]
       return state.dates.unshift("All calendar");
     }
-  },
-  getters: {
-    /* filterGames: state => {
-      let filterArr = state.games;
-      if (state.filterByTeam != "All teams") {
-        filterArr = filterArr.filter(game => {
-          game.home_team === state.filterByTeam;
-        });
-      }
-      return filterArr;
-    } */
   }
 });

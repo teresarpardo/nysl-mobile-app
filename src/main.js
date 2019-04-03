@@ -7,10 +7,10 @@ import "vuetify/dist/vuetify.min.css";
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#3f51b5',
-    secondary: '#b0bec5',
-    accent: '#8c9eff',
-    error: '#b71c1c'
+    primary: '#004D40',
+    secondary: '#00897B',
+    accent: '#80CBC4',
+    error: '#FF5252'
   }
 });
 Vue.config.productionTip = false;
