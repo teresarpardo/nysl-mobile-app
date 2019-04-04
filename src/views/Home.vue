@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 class="text-xs-center subheading grey--text">Welcome to NYSL Games Schedule</h1>
+    <v-container class="my-2">
+      <DataTable/>
+    </v-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import DataTable from "@/components/DataTable.vue";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    DataTable
+  },
+  methods:{
+  goToMap(location) {
+    this.$router.push({name:'location', params: {adress: location }})
+  }
   }
 };
 </script>
