@@ -18,7 +18,7 @@
             <v-menu class="hidden-md-and-up">
                 <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
                 <v-list>
-                    <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+                    <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" >
                         <v-list-tile-content>
                             <v-list-tile-title rigth>{{link.text}}</v-list-tile-title>
                         </v-list-tile-content>

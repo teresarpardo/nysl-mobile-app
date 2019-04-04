@@ -17,24 +17,26 @@
 
   <v-card flat class="grey lighten-3">
     <v-layout row wrap flat>
-      <v-flex xs3 v-for="header in headers" :key="header.id">
+      <v-flex xs2 sm3 v-for="header in headers" :key="header.id">
             <div caption class="grey--text">{{header.text}}</div>
       </v-flex>
       <v-flex xs12>
         <v-layout row wrap flat v-for="game in filterGames" :key="game.id">
-          <v-flex xs3>
+          <v-flex xs2 sm3>
             <div>{{ game.date }}</div>
           </v-flex>
-           <v-flex xs3>
+          <v-flex xs2 sm3>
             <div>{{game.times}}</div>
           </v-flex>
-          <v-flex xs3>
+          <v-flex xs2 sm3>
             <v-chip small :class="`${game.home_team} white--text`">{{ game.home_team }}</v-chip>
           </v-flex>
-          <v-flex xs3>
-            <v-chip small :class="`${game.away_team} white--text left`">{{ game.away_team }}</v-chip>
-            <div class="right" @click="goToMap(game)">
-              <router-link to="/location"><v-icon color="black" class="left">arrow_forward_ios</v-icon></router-link>
+          <v-flex xs2 sm2>
+            <v-chip small :class="`${game.away_team} white--text`">{{ game.away_team }}</v-chip>
+          </v-flex>
+          <v-flex xs4 sm1>
+            <div @click="goToMap(game)">
+              <router-link to="/location"><v-icon color="black" class="right">arrow_forward_ios</v-icon></router-link>
             </div>
           </v-flex>
         </v-layout>
@@ -88,8 +90,6 @@ export default {
   computed: {
     teams() {
       return this.$store.state.teams;
-
-
     },
     dates() {
       return this.$store.state.dates;
@@ -117,7 +117,6 @@ export default {
       this.$router.push({name:'location', params: {adress: game }})
     }
   }
-  
 }
 
 </script>
@@ -130,7 +129,7 @@ export default {
   background-color:#EE82EE;
 }
 .v-chip.U3{
-  background-color:rgb(248, 250, 135);
+  background-color:rgb(241, 245, 30);
 }
 .v-chip.U4{
   background-color:rgb(139, 250, 135);
