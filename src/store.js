@@ -30,6 +30,7 @@ export default new Vuex.Store({
     },
     TeamMenu(state, games) {
       state.teams = [...new Set(games.map(game => game.home_team).sort())];
+      return state.teams.unshift("All teams");
     },
     DateMenu(state, games) {
       state.dates = [
@@ -41,17 +42,7 @@ export default new Vuex.Store({
             })
         )
       ];
+      return state.dates.unshift("All calendar");
     }
-  },
-  getters: {
-    /* filterGames: state => {
-      let filterArr = state.games;
-      if (state.filterByTeam != "All teams") {
-        filterArr = filterArr.filter(game => {
-          game.home_team === state.filterByTeam;
-        });
-      }
-      return filterArr;
-    } */
   }
 });
