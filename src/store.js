@@ -33,7 +33,15 @@ export default new Vuex.Store({
       return state.teams.unshift("All teams");
     },
     DateMenu(state, games) {
-      state.dates = [...new Set(games.map(game => game.date).sort(function(a, b) {return a - b;}))]
+      state.dates = [
+        ...new Set(
+          games
+            .map(game => game.date)
+            .sort(function(a, b) {
+              return a - b;
+            })
+        )
+      ];
       return state.dates.unshift("All calendar");
     }
   }

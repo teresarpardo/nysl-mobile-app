@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="grey lighten-3">
   <v-layout row wrap>
     <v-flex xs12 md6>
       <v-select :items="teams" v-model="filterByTeam" label="Choose your team:" outline>
@@ -44,27 +44,9 @@
     </v-layout>
   </v-card>
 
-  <!-- <v-layout row wrap>
-    <v-flex xs12>
-      <v-data-table
-        :headers="headers"
-        :items="filterGames"
-        hide-actions
-        pa-3
-      >
-        <template v-slot:items="games">
-          <tr v-for="game in filterGames" :key="game.id" class="grey lighten-2">
-            <td xs3>{{ changeDates(game.date) }}</td>
-            <td xs1>{{ game.home_team }}</td>
-            <td xs1>{{ game.away_team }}</td>
-            <td xs3>{{ game.times }}</td>
-            <td xs5 @click="goToMap(game)"><router-link to="/location">{{game.location}} </router-link></td>
-          </tr>
-        </template>
-       </v-data-table>
-    </v-flex>
-  </v-layout> -->
+
    
+
   </div>
 </template>
 
