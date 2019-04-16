@@ -1,8 +1,10 @@
 <template>
   <div class="home">
-    <h1 class="text-xs-center subheading grey--text">Welcome to NYSL Games Schedule</h1>
-    <v-container class="my-2">
-      <DataTable/>
+    <h1 class="text-xs-center subheading grey--text" >Welcome to NYSL Games Schedule</h1>
+    <v-container>
+      <v-layout>
+        <DataTable/>
+      </v-layout>
     </v-container>
   </div>
 </template>
@@ -16,10 +18,5 @@ export default {
   components: {
     DataTable
   },
-  methods:{
-  goToMap(location) {
-    this.$router.push({name:'location', params: {adress: location }})
-  }
-  }
 };
 </script>
