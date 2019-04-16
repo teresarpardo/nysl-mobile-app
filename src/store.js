@@ -29,12 +29,10 @@ export default new Vuex.Store({
       state.games = games;
     },
     TeamMenu(state, games) {
-      state.teams = [...new Set(games.map(game => game.home_team).sort())];
-      return state.teams.unshift("All teams");
+      return state.teams = [...new Set(games.map(game => game.home_team).sort())];
     },
     DateMenu(state, games) {
-      state.dates = [...new Set(games.map(game => game.date).sort(function(a, b) {return a - b;}))]
-      return state.dates.unshift("All calendar");
+       return state.dates = [...new Set(games.map(game => game.date).sort(function(a, b) {return a - b;}))];
     }
   }
 });

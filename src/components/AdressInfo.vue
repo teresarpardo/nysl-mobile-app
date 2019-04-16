@@ -17,6 +17,7 @@
         <p>{{this.name.adress}}</p>
        <iframe :src="this.name.google_maps" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
       </v-container>
+      
     </v-flex>
   </v-layout>
 </template>
