@@ -2,9 +2,7 @@
   <div class="home">
     <h1 class="text-xs-center subheading grey--text" >Welcome to NYSL Games Schedule</h1>
     <v-container>
-      <v-layout>
         <DataTable/>
-      </v-layout>
     </v-container>
   </div>
 </template>

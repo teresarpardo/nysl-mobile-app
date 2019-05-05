@@ -1,35 +1,34 @@
 <template>
 <div class="grey lighten-3">
   <v-layout row wrap>
-    <v-flex xs12 md6>
+    <v-flex xs12 sm6>
       <DropdownTeam :dropdownTeam.sync="filterByTeam"></DropdownTeam>
     </v-flex>
-    <v-flex xs12 md6>
+    <v-flex xs12 sm6>
       <DropdownDate :dropdownDate.sync="filterByDate"></DropdownDate>
-    </v-select>
     </v-flex>
   </v-layout>
 
   <v-card flat class="grey lighten-3">
     <v-layout row wrap flat>
-      <v-flex xs2 v-for="header in headers" :key="header.id">
+      <v-flex xs3 v-for="header in headers" :key="header.id">
             <div caption class="grey--text">{{header.text}}</div>
       </v-flex>
       <v-flex xs12>
         <v-layout row wrap flat v-for="game in filterGames" :key="game.id">
-          <v-flex xs2>
+          <v-flex xs3>
             <div>{{ game.date }}</div>
           </v-flex>
-          <v-flex xs2>
+          <v-flex xs3>
             <div>{{game.times}}</div>
           </v-flex>
-          <v-flex xs2>
+          <v-flex xs3>
             <v-chip small :class="`${game.home_team} white--text`">{{ game.home_team }}</v-chip>
           </v-flex>
           <v-flex xs2>
             <v-chip small :class="`${game.away_team} white--text`">{{ game.away_team }}</v-chip>
           </v-flex>
-          <v-flex xs4>
+          <v-flex xs1>
             <div @click="goToMap(game)">
                 <router-link to="/location"><v-icon color="black" class="right">arrow_forward_ios</v-icon></router-link>
             </div>
@@ -94,7 +93,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .v-chip.U1{
     background-color:rgb(99, 99, 218);
   }
